@@ -1,0 +1,55 @@
+┌──────────────────────────┐
+│ 1. Document Inputs        │
+│ ───────────────────────── │
+│ • Bill of Lading (BOL)    │
+│ • Commercial Invoice      │
+│ • PAAR Document (NCS)     │
+│ • Packing List            │
+└───────────────┬──────────┘
+                │
+                ▼
+┌────────────────────────────────────────┐
+│ 2. LLM Document Intelligence Extraction │
+│ ─────────────────────────────────────── │
+│ • Extract HS Codes                      │
+│ • Extract Declared Goods                │
+│ • Extract Quantities / Weights          │
+│ • Build Expected Cargo Summary          │
+└───────────────┬────────────────────────┘
+                │
+                ▼
+┌──────────────────────────┐
+│ 3. X‑Ray Image Input      │
+│ ───────────────────────── │
+│ • /content/xray_image.jpeg│
+└───────────────┬──────────┘
+                │
+                ▼
+┌────────────────────────────────────────┐
+│ 4. YOLOv8 Cargo Detection               │
+│ ─────────────────────────────────────── │
+│ • Load best.pt model                    │
+│ • Detect physical items in X‑ray        │
+│ • Produce detected item list            │
+└───────────────┬────────────────────────┘
+                │
+                ▼
+┌────────────────────────────────────────┐
+│ 5. LLM Conformity & Risk Audit          │
+│ ─────────────────────────────────────── │
+│ • Compare declared vs detected items    │
+│ • Identify mismatches / concealment     │
+│ • Determine CONFORMITY status           │
+│ • Assign Risk Level (High/Med/Low)      │
+└───────────────┬────────────────────────┘
+                │
+                ▼
+┌──────────────────────────┐
+│ 6. Final Audit Report     │
+│ ───────────────────────── │
+│ • Status: Conformity / Non‑Conformity   │
+│ • Reasoning                             │
+│ • Risk Level                             │
+│ • Flags: HS mismatch, undervaluation,    │
+│   concealment, false declaration         │
+└──────────────────────────┘
